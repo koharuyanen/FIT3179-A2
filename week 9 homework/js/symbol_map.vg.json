@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "Number of immigrants at different cities in Australia",
+  "projection": {
+    "type": "mercator",
+    "scale": 600,
+    "center": [135, -28]},
+  "layer": [ 
+    {
+      "name": "australia",
+      "data": {
+        "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "transform": [{"filter": "datum.id == 36"}],
+      "mark": {"type": "geoshape", "fill": "#f0f0f0", "stroke": "#888"}
+    },
+    {
+      "name": "cities",
+      "data": {
+        "values": [
+          {"city": "Sydney",   "lon": 151.2093, "lat": -33.8688, "immigrants": 200000},
+          {"city": "Melbourne","lon": 144.9631, "lat": -37.8136, "immigrants": 180000},
+          {"city": "Brisbane", "lon": 153.0251, "lat": -27.4698, "immigrants": 90000},
+          {"city": "Perth",    "lon": 115.8575, "lat": -31.9505, "immigrants": 70000},
+          {"city": "Adelaide", "lon": 138.6007, "lat": -34.9285, "immigrants": 55000},
+          {"city": "Canberra", "lon": 149.1300, "lat": -35.2809, "immigrants": 35000}
+        ]
+      },
+      "mark": {"type": "circle", "opacity": 0.8, "stroke": "#333", "strokeWidth": 0.5},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "immigrants",
+          "type": "quantitative",
+          "title": "Immigrants",
+          "scale": {"type": "sqrt", "range": [10, 2000]}
+        },
+        "tooltip": [
+          {"field": "city", "type": "nominal"},
+          {"field": "immigrants", "type": "quantitative", "title": "Immigrants"}
+        ],
+        "color": {"value": "#2c7fb8"}
+      }
+    },
+    {
+      "name": "labels",
+      "mark": {"type": "text", "dy": -8, "fontSize": 11},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "city"}
+      }
+    }
+  ]
+}

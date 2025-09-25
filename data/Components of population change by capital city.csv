@@ -1,0 +1,12 @@
+"Components of population change by capital city"
+"Capital city","Natural increase","Internal migration","Overseas migration"
+"Sydney","27,738","-41,086","120,886"
+"Melbourne","28,978","-7,581","121,240"
+"Brisbane","13,104","15,567","44,259"
+"Adelaide","3,758","-3,323","21,690"
+"Perth","11,250","8,078","53,414"
+"Hobart","462","-2,000","2,484"
+"Darwin","1,378","-2,751","2,740"
+"Canberra","2,800","-1,550","6,246"
+
+"Source: Australian Bureau of Statistics, Regional population 2023-24 financial year"

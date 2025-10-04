@@ -12,29 +12,16 @@
   
 </head>
 <body>
-
-<h1>Diversity of Australia's Population</h1>
-  
-<div id="symbol_worldmap"></div>
-
-<script type="text/javascript">
-
-  var spec2 = "js/symbol_worldmap.vg.json";
-  vegaEmbed('#symbol_worldmap', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-</script>
   
 <div id="choropleth_map"></div>
 
 <script type="text/javascript">
 
-  var spec1 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec1).then(function(result) {
+  var spec2 = "js/choropleth_map.vg.json";
+  vegaEmbed('#map', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
 
 </body>
-
 </html>

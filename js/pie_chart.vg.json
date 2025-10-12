@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Pie chart showing population distribution by country.",
+  "data": { "url": "data/country_birth.csv" },
+  "transform": [
+    { "calculate": "datum.population / 27194370", "as": "percent" }
+  ],
+  "mark": {"type": "arc", "outerRadius": 150, "tooltip": true},
+  "encoding": {
+    "theta": {"field": "percent", "type": "quantitative"},
+    "color": {
+      "condition": { "test": "datum.country == 'Other'", "value": "#BDBDBD" },
+      "field": "country",
+      "type": "nominal",
+      "scale": {"scheme": "category10"},
+      "sort": {"field": "percent", "order": "descending"}
+    },
+    "tooltip": [
+      {"field": "country", "title": "Country"},
+      {"field": "population", "title": "Population"},
+      {"field": "percent", "title": "Percentage", "format": ".1%"}
+    ]
+  },
+  "view": {"stroke": null}
+}

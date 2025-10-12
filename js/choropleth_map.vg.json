@@ -1,11 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 450,
-  "title": "Overseas Migration Growth per capita by State/Territory in Australia",
+  "width": "container",
+  "height": 350,
+  "autosize": {"type": "fit", "contains": "padding"},
+  "title": "Overseas Migration Growth per State/Territory in Australia",
   "projection": {
     "type": "mercator",
-    "scale": 600,
+    "scale": 450,
     "center": [135, -28]},
   "layer": [
     {
@@ -46,7 +47,10 @@
             "domain": [5, 10, 15, 20],
             "range": ["#f7fcf5", "#c7e9c0", "#74c476", "#238b45", "#00441b"]
           },
-          "legend": {"orient": "bottom-right"}
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal"
+          }
         },
         "tooltip": [
           {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},

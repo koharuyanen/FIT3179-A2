@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "title": "Immigration to Australia by Visa Type (2013–2024)",
+  "data": {
+    "url": "data/visa_citizenship_arrival.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Temporary visa holders",
+        "Australian Citizen",
+        "Permanent visa holders",
+        "NZ Citizen (subclass 444)",
+        "Unknown Visa"
+      ],
+      "as": [
+        "visa_type",
+        "immigrants"
+      ]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "nominal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 7
+      }
+    },
+    "y": {
+      "field": "immigrants",
+      "type": "quantitative",
+      "title": "Number of Arrivals ('000)",
+      "axis": {
+        "format": ",.2f"
+      }
+    },
+    "color": {
+      "field": "visa_type",
+      "type": "nominal",
+      "title": "Visa Type",
+      "scale": {
+        "domain": [
+          "Temporary visa holders",
+          "Australian Citizen",
+          "Permanent visa holders",
+          "NZ Citizen (subclass 444)",
+          "Unknown Visa"
+        ],
+        "range": [
+          "#1f77b4",
+          "#ff7f0e",
+          "#2ca02c",
+          "#d62728",
+          "#9467bd"
+        ]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "visa_type",
+        "type": "nominal",
+        "title": "Visa Type"
+      },
+      {
+        "field": "immigrants",
+        "type": "quantitative",
+        "title": "Arrivals ('000)",
+        "format": ",.2f"
+      }
+    ]
+  }
+}

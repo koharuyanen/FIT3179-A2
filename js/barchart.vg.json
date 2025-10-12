@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Top Countries of Nationality for Citizenship Applications (Latest Year)",
+  "description": "Bar chart showing number of people by country of nationality.",
+  "data": {"url": "data/citizenship.csv"},
+  "height": {"step": 25},
+  "mark": {"type": "bar", "color": "#1f77b4"},
+  "encoding": {
+    "y": {
+      "field": "Country of nationality",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Country of Nationality"
+    },
+    "x": {
+      "field": "Number of people",
+      "type": "quantitative",
+      "title": "Number of People",
+      "axis": {"format": ","}
+    },
+    "tooltip": [
+      {"field": "Country of nationality", "title": "Country"},
+      {"field": "Number of people", "title": "People", "format": ","}
+    ]
+  }
+}

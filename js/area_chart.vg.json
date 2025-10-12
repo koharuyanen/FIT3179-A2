@@ -1,0 +1,77 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "description": "Stacked area chart showing Australian-born vs Overseas-born population over time.",
+    "width": "container",
+    "height": 300,
+    "autosize": {
+        "type": "fit",
+        "contains": "padding"
+    },
+    "data": {
+        "url": "data/population_change.csv"
+    },
+    "transform": [
+        {
+            "fold": [
+                "Total Australian-born",
+                "Total overseas-born"
+            ],
+            "as": [
+                "Category",
+                "Count"
+            ]
+        }
+    ],
+    "mark": {
+        "type": "area",
+        "interpolate": "monotone"
+    },
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year"
+        },
+        "y": {
+            "field": "Count",
+            "type": "quantitative",
+            "title": "Population"
+        },
+        "color": {
+            "field": "Category",
+            "type": "nominal",
+            "title": "Category",
+            "scale": {
+                "domain": [
+                    "Total Australian-born",
+                    "Total overseas-born"
+                ],
+                "range": [
+                    "#4daf4a",
+                    "#377eb8"
+                ]
+            },
+            "legend": {
+                "orient": "top-left"
+            }
+        },
+        "tooltip": [
+            {
+                "field": "Year",
+                "title": "Year"
+            },
+            {
+                "field": "Category",
+                "title": "Category"
+            },
+            {
+                "field": "Count",
+                "title": "Population",
+                "format": ","
+            }
+        ]
+    },
+    "view": {
+        "stroke": null
+    }
+}

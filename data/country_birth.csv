@@ -1,4 +1,5 @@
 country,population,longitude,latitude
+Australia,18617690,133.7751,-25.2744
 New Zealand,617960,174.8860,-40.9006
 England,963560,-1.1743,52.3555
 Scotland,124880,-4.2026,56.4907
@@ -19,3 +20,4 @@ South Africa,224160,22.9375,-30.5595
 Indonesia,120160,113.9213,-0.7893
 Malaysia,183490,101.9758,4.2105
 Philippines,394380,121.7740,12.8797
+Other,5913890,null,null

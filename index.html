@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Diversity of Australia's Population Visualisation</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
-    <!-- Import pure.css -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- Google font -->
-  
+
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-  
+
 </head>
+
 <body>
 
-<div class="page">
-    <div class="pure-g" style="align-items: center;">
+  <div class="page">
+    <div class="pure-g" style="margin-bottom: 0;">
       <div class="pure-u-1-1">
-        <h1 style="margin: 0;">Diversity of Australia's Population</h1>
+        <h1>Diversity of Australia's Population</h1>
       </div>
     </div>
 
     <!-- Content row -->
     <div class="pure-g">
       <!-- Left side: intro text -->
-      <div class="pure-u-1-2">
-        <p>
-          Australia is home to people from more than 200 countries, making it one of the most culturally diverse nations in the world. 
-          This diversity enriches the nation’s social, cultural, and economic life.
-        </p>
+      <div class="pure-u-2-3">
+        <p>Australia is one of the most culturally diverse countries in the world. Its population of over 26 million
+          includes people from more than 200 countries, speaking hundreds of languages and practicing many different
+          religions. This diversity is reflected in Australia's food, traditions, and way of life.</p>
+        <p>From the First Nations peoples to migrants who have made Australia their home, each group contributes to a
+          vibrant, inclusive society that values respect, equality, and a shared sense of belonging.</p>
       </div>
 
       <!-- Right side: flag image -->
-      <div class="pure-u-1-2" style="text-align: right;">
+      <div class="pure-u-1-3" style="text-align: right;">
         <img src="data/images/australia_flag.png" alt="Australia flag" style="width: 250px;">
       </div>
     </div>
 
 
 
-        <!-- pure grid group -->
+    <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
         <div class="description description-left">
@@ -52,11 +56,16 @@
         </div>
       </div>
       <div class="pure-u-1-1">
-        <p>text </p>
-        <div id="symbol_worldmap" class="vis-container"></div>
-       <div class="pure-u-1-1">
-        <div id="line_chart" class="vis-container" style="margin-left: 15px;"></div>
-      </div>
+        <p>This chart shows the <b>top 20 countries</b> of birth for people living in Australia, excluding those born in
+          Australia itself. The three largest groups come from <b>England</b>, <b>India</b>, and <b>New Zealand</b>, reflecting both
+          historical ties and modern migration trends. Over time, there has been a clear shift, with more people from
+          Asian countries choosing to make Australia their home, highlighting the country's growing connections with the
+          Asia-Pacific region. The significant number of people from India also reflects Australia's evolving migration
+          patterns and cultural links, showing how historical influences and modern opportunities continue to shape
+          Australia's diverse population. </p>
+        <div class="pure-u-1-1">
+          <div id="map_linechart" class="vis-container"></div>
+        </div>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -64,39 +73,72 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-2">
-        <h3>Overall Proportion of Birthplace</h3>
-        <p>text </p>
+        <h3>Overall Proportion of Birthplace (2024)</h3>
+        <p style="padding-right: 40px;">This pie chart shows where people living in Australia were born. It clearly
+          highlights that almost half of
+          Australia's population was born overseas, showing just how diverse the country has become. The wide range of
+          countries represented demonstrates Australia's multicultural nature and how migration has shaped its
+          population over time. The large proportion labeled “Other” also indicates that people are coming from many
+          different parts of the world, not just a few major countries.</p>
         <div id="pie_chart" class="vis-container"></div>
       </div>
       <div class="pure-u-1-2">
         <h3>Population Over Time</h3>
-        <p>text </p>
-        <div id="area_chart" class="vis-container"></div>
+        <p>There is a steady increase in both Australia-born and overseas-born populations over time. It
+          tells the story of a country that continues to grow not only through migration but also through local birth
+          rates. The upward trend suggests that many people who migrate to Australia choose to settle permanently, build
+          their lives, and raise families here. This highlights Australia's strong appeal as a place to live and the
+          sense of stability and opportunity it offers to both newcomers and long-term residents.</p>
+        <div id="area_chart" class="vis-container" style="padding-top: 20px;"></div>
       </div>
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-3">
+      <div class="pure-u-1-2">
+        <h2>Where did we go?</h2>
         <div class="description description-left">
-          <h2>Where did we go?</h2>
-          <p>text </p>
+          <p>The map highlights the number of overseas migrants across Australian states, adjusted to account for each
+            state's population size. This normalisation allows for a fair comparison by showing the proportion of
+            migrants rather than just the raw numbers. From the visualisation, it is evident that Victoria, New South
+            Wales, and Western Australia stand out as the states with the highest levels of overseas migration relative
+            to their populations. </p>
+
+          <p>This pattern likely reflects the strong economic growth, diverse job markets, and world-class education
+            systems in these regions, which attract international students and skilled workers alike. Additionally,
+            these states are home to major urban centres such as <b>Melbourne</b>, <b>Sydney</b>, and <b>Perth</b>, offering vibrant
+            lifestyles and cultural diversity that make them appealing destinations for migrants seeking new
+            opportunities in Australia.</p>
         </div>
       </div>
-      <div class="pure-u-2-3">
+      <div class="pure-u-1-2">
         <div id="choropleth_map" class="vis-container"></div>
       </div>
     </div>
     <!-- end pure grid group -->
 
-        <!-- pure grid group -->
+    <!-- pure grid group -->
     <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2>From Arrival to Citizenship</h2>
+      </div>
       <div class="pure-u-1-2">
+        <p>For most years, the number of people arriving in Australia on temporary visas—such as student, working
+          holiday, and business visas—has been significantly higher than the number of arrivals with permanent
+          residency or Australian citizenship. However, in 2020, this trend reversed. Due to COVID-19 travel
+          restrictions and border closures, the number of Australian citizens returning home exceeded the number of
+          temporary visa holders entering the country, as international travel and visa programs were largely
+          suspended.</p>
         <div id="stack_barchart" class="vis-container"></div>
       </div>
       <div class="pure-u-1-2">
         <div id="barchart" class="vis-container"></div>
+        <p>Many people from overseas choose to become Australian citizens for various benefits, such as greater
+          stability, rights, and opportunities. In particular, citizens from <b>New Zealand</b> often make up a large portion
+          of new citizenships, as the process is generally easier for them compared to other nationalities.
+          Additionally, the greatest number of people in the “Other” category highlights Australia's increasing cultural
+          diversity, reflecting the wide range of nationalities choosing to call Australia home.</p>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -104,48 +146,41 @@
 
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by Koharu Numaga. The datasource is <a href="#" target=" _blank">some data repository online</a>.</p>
+        <p>This visualisation is created by Koharu Numaga. The datasource is <a href="#" target=" _blank">some data
+            repository online</a>.</p>
       </div>
     </div>
 
- </div> <!-- end page -->
+  </div> <!-- end page -->
 
-<script type="text/javascript">
-  var spec1 = "js/choropleth_map.vg.json";
-  var spec2 = "js/symbol_worldmap.vg.json";
-  var spec3 = "js/line_chart.vg.json";
-  var spec4 = "js/stack_barchart.vg.json";
-  var spec5 = "js/barchart.vg.json";
-  var spec6 = "js/pie_chart.vg.json";
-  var spec7 = "js/area_chart.vg.json";
-  var spec8 = "js/new_citizen.vg.json";
+  <script type="text/javascript">
+    var spec1 = "js/choropleth_map.vg.json";
+    var spec2 = "js/map_linechart.vg.json";
+    var spec3 = "js/stack_barchart.vg.json";
+    var spec4 = "js/barchart.vg.json";
+    var spec5 = "js/pie_chart.vg.json";
+    var spec6 = "js/area_chart.vg.json";
 
-  vegaEmbed('#choropleth_map', spec1).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#choropleth_map', spec1).then(function (result) {
+    }).catch(console.error);
 
-    vegaEmbed('#symbol_worldmap', spec2).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#map_linechart', spec2).then(function (result) {
+    }).catch(console.error);
 
-    vegaEmbed('#line_chart', spec3).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#stack_barchart', spec3).then(function (result) {
+    }).catch(console.error);
 
-  vegaEmbed('#stack_barchart', spec4).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#barchart', spec4).then(function (result) {
+    }).catch(console.error);
 
-  vegaEmbed('#barchart', spec5).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#pie_chart', spec5).then(function (result) {
+    }).catch(console.error);
 
-  vegaEmbed('#pie_chart', spec6).then(function(result) {
-  }).catch(console.error);
+    vegaEmbed('#area_chart', spec6).then(function (result) {
+    }).catch(console.error)
 
-  vegaEmbed('#area_chart', spec7).then(function(result) {
-  }).catch(console.error);
 
-  // vegaEmbed('#new_citizen', spec8).then(function(result) {
-  // }).catch(console.error);
-  
-
-</script>
+  </script>
 
 </body>
 

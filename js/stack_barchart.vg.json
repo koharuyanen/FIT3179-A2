@@ -23,8 +23,26 @@
         "visa_type",
         "immigrants"
       ]
+    },
+    {
+      "filter": {
+        "param": "legendSel"
+      }
     }
   ],
+      "params": [
+        {
+            "name": "legendSel",
+            "select": {
+                "type": "point",
+                "fields": [
+                    "visa_type"
+                ],
+                "toggle": "false"
+            },
+            "bind": "legend"
+        }
+    ],
   "mark": "bar",
   "encoding": {
     "x": {
@@ -65,7 +83,8 @@
         ]
       },
       "legend": {
-        "orient": "bottom"
+        "orient": "bottom",
+        "direction": "vertical"
       }
     },
     "tooltip": [

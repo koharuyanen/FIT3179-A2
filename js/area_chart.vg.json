@@ -20,6 +20,24 @@
                 "Category",
                 "Count"
             ]
+        },
+        {
+            "filter": {
+                "param": "legendSel"
+            }
+        }
+    ],
+    "params": [
+        {
+            "name": "legendSel",
+            "select": {
+                "type": "point",
+                "fields": [
+                    "Category"
+                ],
+                "toggle": "true"
+            },
+            "bind": "legend"
         }
     ],
     "mark": {
@@ -29,8 +47,20 @@
     "encoding": {
         "x": {
             "field": "Year",
-            "type": "temporal",
-            "title": "Year"
+            "type": "ordinal",
+            "title": "Year",
+            "axis": {
+                "values": [
+                    "1960",
+                    "1970",
+                    "1980",
+                    "1990",
+                    "2000",
+                    "2010",
+                    "2020"
+                ],
+                "labelAngle": 0
+            }
         },
         "y": {
             "field": "Count",
@@ -54,6 +84,13 @@
             "legend": {
                 "orient": "top-left"
             }
+        },
+        "opacity": {
+            "condition": {
+                "param": "legendSel",
+                "value": 1
+            },
+            "value": 0.2
         },
         "tooltip": [
             {

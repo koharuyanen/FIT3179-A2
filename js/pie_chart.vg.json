@@ -1,25 +1,140 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Pie chart showing population distribution by country.",
-  "data": { "url": "data/country_birth.csv" },
-  "transform": [
-    { "calculate": "datum.population / 27194370", "as": "percent" }
+  "data": {
+    "url": "data/country_birth.csv"
+  },
+  "params": [
+    {
+      "name": "CountrySel",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "name": "Country: ",
+        "options": [
+          "All",
+          "Australia",
+          "China",
+          "England",
+          "Hong Kong",
+          "India",
+          "Indonesia",
+          "Iraq",
+          "Ireland",
+          "Italy",
+          "Malaysia",
+          "Nepal",
+          "New Zealand",
+          "Pakistan",
+          "Philippines",
+          "Scotland",
+          "South Africa",
+          "South Korea",
+          "Sri Lanka",
+          "Thailand",
+          "Vietnam",
+          "Other"
+        ]
+      }
+    }
   ],
-  "mark": {"type": "arc", "outerRadius": 150, "tooltip": true},
+  "transform": [
+    {
+      "calculate": "datum.population / 27194370",
+      "as": "percent"
+    },
+    {
+      "calculate": "datum.country == 'Other' ? 1 : 0",
+      "as": "isOther"
+    }
+  ],
   "encoding": {
-    "theta": {"field": "percent", "type": "quantitative"},
-    "color": {
-      "condition": { "test": "datum.country == 'Other'", "value": "#BDBDBD" },
-      "field": "country",
-      "type": "nominal",
-      "scale": {"scheme": "category10"},
-      "sort": {"field": "percent", "order": "descending"}
+    "theta": {
+      "field": "percent",
+      "type": "quantitative",
+      "stack": true
+    },
+    "order": {
+      "field": "isOther",
+      "type": "quantitative",
+      "sort": "ascending"
+    },
+    "opacity": {
+      "condition": {
+        "test": "CountrySel == 'All' || datum.country == CountrySel",
+        "value": 1
+      },
+      "value": 0.25
     },
     "tooltip": [
-      {"field": "country", "title": "Country"},
-      {"field": "population", "title": "Population"},
-      {"field": "percent", "title": "Percentage", "format": ".1%"}
+      {
+        "field": "country",
+        "title": "Country"
+      },
+      {
+        "field": "population",
+        "title": "Population"
+      },
+      {
+        "field": "percent",
+        "title": "Percentage",
+        "format": ".1%"
+      }
     ]
   },
-  "view": {"stroke": null}
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "color": {
+          "field": "country",
+          "type": "nominal",
+          "scale": {
+            "scheme": "category10"
+          },
+          "legend": null,
+          "condition": [
+            {
+              "test": "datum.country == 'Other'",
+              "value": "#BDBDBD"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 100,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {
+          "field": "country"
+        },
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum.country == CountrySel",
+              "value": 1
+            },
+            {
+              "test": "CountrySel == 'All' && (datum.country == 'India' || datum.country == 'Australia' || datum.country == 'Other' || datum.country == 'New Zealand' || datum.country == 'England' || datum.country == 'China')",
+              "value": 1
+            }
+          ],
+          "value": 0
+        }
+      }
+    }
+  ],
+  "view": {
+    "stroke": null
+  }
 }

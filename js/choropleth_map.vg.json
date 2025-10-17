@@ -7,7 +7,7 @@
   "projection": {
     "type": "mercator",
     "scale": 450,
-    "center": [135, -28]},
+    "center": [132, -28]},
   "layer": [
     {
       "name": "graticule",

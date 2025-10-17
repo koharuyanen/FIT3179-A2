@@ -1,26 +1,56 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": "Top Countries of Nationality for Citizenship Applications (Latest Year)",
+  "title": "Australian citizenship Conferral (2024)",
   "description": "Bar chart showing number of people by country of nationality.",
-  "data": {"url": "data/citizenship.csv"},
-  "height": {"step": 25},
-  "mark": {"type": "bar", "color": "#1f77b4"},
+  "data": {
+    "url": "data/citizenship.csv"
+  },
+  "width": "container",
+  "height": {
+    "step": 25
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#1f77b4"
+  },
+  "transform": [
+    {
+      "calculate": "datum['Country of nationality'] == 'Other' ? 1 : 0",
+      "as": "isOther"
+    }
+  ],
   "encoding": {
     "y": {
       "field": "Country of nationality",
       "type": "nominal",
-      "sort": "-x",
-      "title": "Country of Nationality"
+      "sort": {
+        "field": "isOther",
+        "order": "ascending"
+      },
+      "title": null
     },
     "x": {
       "field": "Number of people",
       "type": "quantitative",
       "title": "Number of People",
-      "axis": {"format": ","}
+      "axis": {
+        "format": "d"
+      }
     },
     "tooltip": [
-      {"field": "Country of nationality", "title": "Country"},
-      {"field": "Number of people", "title": "People", "format": ","}
+      {
+        "field": "Country of nationality",
+        "title": "Country"
+      },
+      {
+        "field": "Number of people",
+        "title": "People",
+        "format": ","
+      }
     ]
   }
 }

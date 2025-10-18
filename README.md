@@ -13,7 +13,7 @@ Data source/author and its relevance:
 -	Australia population based on the country of birth: https://www.abs.gov.au/statistics/people/population/australias-population-country-birth/latest-release  
 -	Population Increase: https://www.abs.gov.au/statistics/people/population/overseas-migration/latest-release 
 -	Citizenship: https://www.homeaffairs.gov.au/research-and-statistics/statistics/citizenship-statistics 
--	visa type: https://www.abs.gov.au/statistics/people/population/overseas-migration/latest-release
+-	Visa type: https://www.abs.gov.au/statistics/people/population/overseas-migration/latest-release
   
 Creation Process
 -	List it out all information that I want to present

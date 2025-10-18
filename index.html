@@ -14,7 +14,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google font -->
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
@@ -33,8 +35,10 @@
     <div class="pure-g">
       <!-- Left side: intro text -->
       <div class="pure-u-2-3">
-        <p>Australia is one of the most culturally diverse countries in the world. Its population of over 26 million
-          includes people from more than 200 countries, speaking hundreds of languages and practicing many different
+        <p><b>Australia</b> is one of the most culturally diverse countries in the world. Its population of over <b>26
+            million</b>
+          includes people from more than <b>200 countries</b>, speaking hundreds of languages and practicing many
+          different
           religions. This diversity is reflected in Australia's food, traditions, and way of life.</p>
         <p>From the First Nations peoples to migrants who have made Australia their home, each group contributes to a
           vibrant, inclusive society that values respect, equality, and a shared sense of belonging.</p>
@@ -42,7 +46,7 @@
 
       <!-- Right side: flag image -->
       <div class="pure-u-1-3" style="text-align: right;">
-        <img src="data/images/australia_flag.png" alt="Australia flag" style="width: 250px;">
+        <img src="data/images/australia_flag.png" alt="Australia flag" style="width: 250px; padding-top: 20px;">
       </div>
     </div>
 
@@ -56,13 +60,18 @@
         </div>
       </div>
       <div class="pure-u-1-1">
-        <p>This chart shows the <b>top 20 countries</b> of birth for people living in Australia, excluding those born in
-          Australia itself. The three largest groups come from <b>England</b>, <b>India</b>, and <b>New Zealand</b>, reflecting both
+        <p>The map shows the <b>top 20 countries</b> of birth for people living in Australia, excluding those born in
+          Australia itself. The three largest groups come from <b>England</b>, <b>India</b>, and <b>New Zealand</b>,
+          reflecting both
           historical ties and modern migration trends. Over time, there has been a clear shift, with more people from
           Asian countries choosing to make Australia their home, highlighting the country's growing connections with the
           Asia-Pacific region. The significant number of people from India also reflects Australia's evolving migration
           patterns and cultural links, showing how historical influences and modern opportunities continue to shape
           Australia's diverse population. </p>
+        <p>The line chart highlights a steady and consistently large number of people from England over time. Meanwhile,
+          migration from India has risen sharply, now almost matching the English-born population. The number of people
+          from China has also grown, though a small dip is visible during the COVID-19 period due to travel
+          restrictions.</p>
         <div class="pure-u-1-1">
           <div id="map_linechart" class="vis-container"></div>
         </div>
@@ -96,8 +105,10 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-1-1">
         <h2>Where did we go?</h2>
+      </div>
+      <div class="pure-u-1-2">
         <div class="description description-left">
           <p>The map highlights the number of overseas migrants across Australian states, adjusted to account for each
             state's population size. This normalisation allows for a fair comparison by showing the proportion of
@@ -107,7 +118,8 @@
 
           <p>This pattern likely reflects the strong economic growth, diverse job markets, and world-class education
             systems in these regions, which attract international students and skilled workers alike. Additionally,
-            these states are home to major urban centres such as <b>Melbourne</b>, <b>Sydney</b>, and <b>Perth</b>, offering vibrant
+            these states are home to major urban centres such as <b>Melbourne</b>, <b>Sydney</b>, and <b>Perth</b>,
+            offering vibrant
             lifestyles and cultural diversity that make them appealing destinations for migrants seeking new
             opportunities in Australia.</p>
         </div>
@@ -135,7 +147,8 @@
       <div class="pure-u-1-2">
         <div id="barchart" class="vis-container"></div>
         <p>Many people from overseas choose to become Australian citizens for various benefits, such as greater
-          stability, rights, and opportunities. In particular, citizens from <b>New Zealand</b> often make up a large portion
+          stability, rights, and opportunities. In particular, citizens from <b>New Zealand</b> often make up a large
+          portion
           of new citizenships, as the process is generally easier for them compared to other nationalities.
           Additionally, the greatest number of people in the “Other” category highlights Australia's increasing cultural
           diversity, reflecting the wide range of nationalities choosing to call Australia home.</p>
@@ -144,9 +157,12 @@
     <!-- end pure grid group -->
 
 
+
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by Koharu Numaga. The datasource is <a href="#" target=" _blank">some data
+        <p>You can click the legend items to filter the data displayed in the visualisation.</p>
+        <p>This visualisation is created by Koharu Numaga on 17/10/2025. The datasource is <a href="#"
+            target=" _blank">some data
             repository online</a>.</p>
       </div>
     </div>
@@ -155,7 +171,7 @@
 
   <script type="text/javascript">
     var spec1 = "js/choropleth_map.vg.json";
-    var spec2 = "js/map_linechart.vg.json";
+    var spec2 = "js/test.vg.json";
     var spec3 = "js/stack_barchart.vg.json";
     var spec4 = "js/barchart.vg.json";
     var spec5 = "js/pie_chart.vg.json";

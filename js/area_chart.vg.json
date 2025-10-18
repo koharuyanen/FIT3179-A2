@@ -35,7 +35,7 @@
                 "fields": [
                     "Category"
                 ],
-                "toggle": "true"
+                "toggle": "false"
             },
             "bind": "legend"
         }

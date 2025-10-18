@@ -94,7 +94,7 @@
           "field": "country",
           "type": "nominal",
           "scale": {
-            "scheme": "category10"
+            "scheme": "tableau20"
           },
           "legend": null,
           "condition": [
@@ -109,9 +109,8 @@
     {
       "mark": {
         "type": "text",
-        "radius": 100,
-        "fontSize": 12,
-        "fontWeight": "bold",
+        "radius": 150,
+        "fontSize": 14,
         "color": "black"
       },
       "encoding": {

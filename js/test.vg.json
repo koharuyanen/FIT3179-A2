@@ -1,0 +1,292 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "params": [
+        {
+            "name": "CountrySel",
+            "value": "All"
+        }
+    ],
+    "vconcat": [
+        {
+            "width": 650,
+            "height": 360,
+            "title": "Top 20 Country of Birth in Australia",
+            "projection": {
+                "type": "equalEarth",
+                "scale": 140,
+                "center": [
+                    40,
+                    95
+                ]
+            },
+            "layer": [
+                {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "ne_110m_admin_0_countries"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "lightgray",
+                        "stroke": "white"
+                    }
+                },
+                {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "ne_110m_admin_0_countries"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum.properties.NAME == 'Australia'"
+                        }
+                    ],
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#4E79A7",
+                        "strokeWidth": 2
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/country_birth.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "(CountrySel == 'All' && datum.country != 'Australia' && datum.country != 'Other') || datum.country == CountrySel || (CountrySel == 'United Kingdom' && datum.country == 'England')"
+                        },
+                        {
+                            "filter": {
+                                "param": "legendSel"
+                            }
+                        }
+
+                    ],
+                    "mark": {
+                        "type": "circle",
+                        "tooltip": {
+                            "content": "data"
+                        }
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "longitude",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "latitude",
+                            "type": "quantitative"
+                        },
+                        "size": {
+                            "field": "population",
+                            "type": "quantitative",
+                            "title": "Number of people",
+                            "scale": {
+                                "range": [
+                                    50,
+                                    2000
+                                ]
+                            },
+                            "legend": {
+                                "orient": "right",
+                                "direction": "vertical"
+                            }
+                        },
+                        "color": {
+                            "field": "population",
+                            "type": "quantitative",
+                            "title": "Number of people",
+                            "scale": {
+                                "scheme": "teals"
+                            }
+                        },
+                        "tooltip": [
+                            {
+                                "field": "country",
+                                "title": "Country"
+                            },
+                            {
+                                "field": "population",
+                                "title": "Number of people"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/country_birth.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "CountrySel == 'All' || datum.country == CountrySel || (CountrySel == 'United Kingdom' && datum.country == 'England')"
+                        },
+                        {
+                            "filter": {
+                                "param": "legendSel"
+                            }
+                        }
+                    ],
+                    "mark": {
+                        "type": "text",
+                        "align": "left",
+                        "dy": 10,
+                        "fontSize": 8
+                    },
+                    "encoding": {
+                        "opacity": {
+                            "condition": {
+                                "test": "datum.country == 'China' || datum.country == 'India' || datum.country == 'New Zealand' || datum.country == 'England'",
+                                "value": 1
+                            },
+                            "value": 0
+                        },
+                        "longitude": {
+                            "field": "longitude",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "latitude",
+                            "type": "quantitative"
+                        },
+                        "text": {
+                            "field": "country"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "width": 650,
+            "height": 200,
+            "title": "Immigration Trends to Australia by Top Countries (1996–2024)",
+            "data": {
+                "url": "data/top5_population_change.csv"
+            },
+            "params": [
+                {
+                    "name": "legendSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "country"
+                        ],
+                        "toggle": "false"
+                    },
+                    "bind": "legend"
+                }
+            ],
+            "transform": [
+                {
+                    "fold": [
+                        "England",
+                        "India",
+                        "China",
+                        "New Zealand",
+                        "Philippines"
+                    ],
+                    "as": [
+                        "country",
+                        "immigrants"
+                    ]
+                },
+                {
+                    "filter": "CountrySel == 'All' || datum.country == CountrySel"
+                },
+                {
+                    "filter": {
+                        "param": "legendSel"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "line"
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal",
+                    "title": "Year"
+                },
+                "y": {
+                    "field": "immigrants",
+                    "type": "quantitative",
+                    "axis": {
+                        "format": ",.0f"
+                    },
+                    "title": "Number of People",
+                    "scale": {
+                        "zero": false
+                    }
+                },
+                "color": {
+                    "field": "country",
+                    "type": "nominal",
+                    "title": "Country",
+                    "scale": {
+                        "domain": [
+                            "India",
+                            "China",
+                            "Philippines",
+                            "England",
+                            "New Zealand"
+                        ],
+                        "range": [
+                            "#59A14F",
+                            "#A0CBE8",
+                            "#D37295",
+                            "#F28E2B",
+                            "#ff9D9A"
+                        ]
+                    },
+                    "legend": {
+                        "orient": "right"
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "Year",
+                        "type": "quantitative",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "country",
+                        "type": "nominal",
+                        "title": "Country"
+                    },
+                    {
+                        "field": "immigrants",
+                        "type": "quantitative",
+                        "title": "People",
+                        "format": ",.0f"
+                    }
+                ],
+                "opacity": {
+                    "condition": {
+                        "test": "CountrySel == 'All' || datum.country == CountrySel",
+                        "value": 1
+                    },
+                    "value": 0.25
+                }
+            }
+        }
+    ],
+    "spacing": 20,
+    "resolve": {
+        "scale": {
+            "color": "independent",
+            "size": "independent"
+        }
+    }
+}

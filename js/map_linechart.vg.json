@@ -38,7 +38,7 @@
             "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
           },
           "transform": [{ "filter": "datum.properties.NAME == 'Australia'" }],
-          "mark": { "type": "geoshape", "fill": "#ff6b35", "strokeWidth": 2 }
+          "mark": { "type": "geoshape", "fill": "#4E79A7", "strokeWidth": 2 }
         },
         {
           "data": { "url": "data/country_birth.csv", "format": { "type": "csv" } },
@@ -62,7 +62,7 @@
               "field": "population",
               "type": "quantitative",
               "title": "Number of people",
-              "scale": { "scheme": "blues" }
+              "scale": { "scheme": "teals" }
             },
             "tooltip": [
               { "field": "country", "title": "Country" },
@@ -109,7 +109,7 @@
       "mark": { "type": "line" },
 
       "encoding": {
-        "x": { "field": "Year", "type": "quantitative", "title": "Year" },
+        "x": { "field": "Year", "type": "ordinal", "title": "Year" },
         "y": {
           "field": "immigrants",
           "type": "quantitative",
@@ -123,7 +123,7 @@
           "title": "Country",
           "scale": {
             "domain": ["India", "China", "Philippines", "United Kingdom", "New Zealand"],
-            "range": ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"]
+            "range": ["#59A14F", "#A0CBE8", "#D37295", "#F28E2B", "#ff9D9A"]
           },
           "legend": { "orient": "right" }
         },

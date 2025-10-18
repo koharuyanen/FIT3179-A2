@@ -1,13 +1,21 @@
 body *{
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Sriracha", cursive;
+    line-height: 1.5;
+
 }
 
 h1 {
-    font-weight: 900;
+    font-size: 40px;
+}
+
+h1, h2{
+   font-weight: 900;
 }
 
 body {
-    background-color: lightgray;
+    background-image: url('../data/images/image.png');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .page {
@@ -16,6 +24,7 @@ body {
     margin: auto;
     padding: 50px;
     padding-top: 35px;
+    opacity: 0.95;
 }
 
 .vis-container {
